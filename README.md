@@ -13,20 +13,20 @@ Przyjmij następującą konwencję:
 - **Symbole predykatywne** są zawsze oznaczone pojedynczą małą literą alfabetu łacińskieg od `p` do `z`, po której następuje `/` i jedna cyfra określająca liczbę argumentów (arność) symbolu
 - **Operatory i kwantyfikatory** mogą być oznaczone w jednym ze sposobów opisanych w tabeli (program musi obsługiwać wszystkie warianty)
 ---
-|             Elementy              |      Zapis      | Symbol |
-|:---------------------------------:|:---------------:|:------:|
-|               stała               |    `a`...`e`    |  `b`   |
-|              zmienna              |    `A`...`Z`    |  `C`   |
-|         symbol funkcyjny          |    `f`...`n`    | `h/2`  |
-|        symbol predykatywny        |    `p`...`z`    | `q/3`  |
-|              negacja              | `NOT`, `~`, `¬` |  `¬`   |
-|            koniunkcja             | `AND`, `&`, `∧` |  `∧`   |
-| alternatywa <br/>(~~dysjunkcja~~) | `OR`, `|`, `∨`  |  `∨`   |
-|            implikacja             | `IMPLIES`, `→`  |  `→`   |
-|           równoważność            |   `IFF`, `↔`    |  `↔`   |
-|     alternatywa wykluczająca      |   `XOR`, `⊕`    |  `⊕`   |
-|       kwantyfikator ogólny        |  `FORALL`, `∀`  |  `∀`   |
-|     kwantyfikator szczegółowy     |  `EXISTS`, `∃`  |  `∃`   |
+|             Elementy              |             Zapis              | Symbol |
+|:---------------------------------:|:------------------------------:|:------:|
+|               stała               |           `a`...`e`            |  `b`   |
+|              zmienna              |           `A`...`Z`            |  `C`   |
+|         symbol funkcyjny          |           `f`...`n`            | `h/2`  |
+|        symbol predykatywny        |           `p`...`z`            | `q/3`  |
+|              negacja              |        `NOT`, `~`, `¬`         |  `¬`   |
+|            koniunkcja             |        `AND`, `&`, `∧`         |  `∧`   |
+| alternatywa <br/>(~~dysjunkcja~~) | `OR`, <code>&vert;</code>, `∨` |  `∨`   |
+|            implikacja             |         `IMPLIES`, `→`         |  `→`   |
+|           równoważność            |           `IFF`, `↔`           |  `↔`   |
+|     alternatywa wykluczająca      |           `XOR`, `⊕`           |  `⊕`   |
+|       kwantyfikator ogólny        |         `FORALL`, `∀`          |  `∀`   |
+|     kwantyfikator szczegółowy     |         `EXISTS`, `∃`          |  `∃`   |
 
 ### Wejście (przykład):
 
