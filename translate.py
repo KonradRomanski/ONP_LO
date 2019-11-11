@@ -1,6 +1,6 @@
-quantifiers = {"FORALL", "EXIST"}
-single_argument = {"NOT"}
-double_argument = {"AND", "OR", "IMPLIES", "IFF", "XOR"}
+quantifiers = {"FORALL", "∀","EXISTS", "∃"}
+single_argument = {"NOT", "~", "¬"}
+double_argument = {"AND", "&", "∧", "OR", "|", "∨", "IMPLIES", "→", "IFF", "↔", "XOR", "⊕"}
 
 def to_onp(li):
     i = 0
