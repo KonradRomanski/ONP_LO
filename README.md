@@ -21,16 +21,20 @@ Przyjmij następującą konwencję:
 	+ kwantyfikator ogólny: FORALL, ∀
 	+ kwantyfikator szczegółowy: EXISTS, ∃
 
-### Przykładowe wejście:
+### Wejście (przykład):
 
-`a p/1`  
-`Z Z p/1 EXISTS`  
-`Z X X a f/2 p/1 ∃ Y Y Z f/1 p/2 FORALL → FORALL`  
-`Z Y X X b c q/3 Z Y f/1 p/2 ~ & EXISTS FORALL EXISTS`
+```py
+a p/1
+Z Z p/1 EXISTS
+Z X X a f/2 p/1 ∃ Y Y Z f/1 p/2 FORALL → FORALL
+Z Y X X b c q/3 Z Y f/1 p/2 ~ & EXISTS FORALL EXISTS
+```
 
-### Możliwe wyjście dla powyższego przykładu:
+### Wyjście (przykład):
 
-`p(a)`  
-`(EXISTS Z p(Z))`  
-`(FORALL Z ((∃ X p(f(X, a))) → (FORALL Y p(Y, f(Z)))))`  
-`(EXISTS Z (FORALL Y (EXISTS X (q(X, b, c) & (~ p(Z, f(Y)))))))`
+```py
+p(a)
+(EXISTS Z p(Z))
+(FORALL Z ((∃ X p(f(X, a))) → (FORALL Y p(Y, f(Z)))))
+(EXISTS Z (FORALL Y (EXISTS X (q(X, b, c) & (~ p(Z, f(Y)))))))
+```
