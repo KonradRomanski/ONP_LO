@@ -7,21 +7,26 @@ def lread(li=[]):
             listt = input().split()
             li.append(listt)
 
-        except (EOFError):
+        except EOFError:
+            print()
+            break
+
+        except KeyboardInterrupt:
+            print("\n")
             break
     return li
 
 
 def lprint(li):
-    for i in enumerate(li):
-        for j in li[i[0]]:
+    for i in li:
+        for j in i:
             print(j, end=" ")
-        print("")
+        print()
 
 
 def main():
     lists = lread()
-    lists_changed = translate.to_onp(lists[0])
+    lists_changed = translate.to_onp(lists)
     lprint(lists_changed)
 
 
