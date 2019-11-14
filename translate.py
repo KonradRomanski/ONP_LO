@@ -7,10 +7,8 @@ predicats = {"p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"}
 def to_onp(li):
     i = 0
     while i < len(li):
-        print("@", li[i])
         while (li[i].isalpha()) and (len(li[i]) == 1):         # znajduje następny operator
             i += 1
-            print("@", li[i])
         # pobiera tyle argumentów, ile mu potrzebne
         if li[i] in single_argument:                          # operatory 1-argumentowe
             li[i-1] = f"{li[i]} {li.pop(i-1)}"
@@ -26,20 +24,15 @@ def to_onp(li):
 
         elif li[i] in quantifiers:
             j=i-1
-            while (not(li[i].isalpha()) and (len(li[i]) != 1)):         # znajduje następny operator
+
+            while (not(li[j].isalpha()) and (len(li[j]) != 1)):         # znajduje następny operator
                 j -= 1
-                print("#", j)
-            j -= 1
-            print("#", j)
-            arg1 = li[j]
-            arg2=""
-            for k in range (j+1, i):
-                arg2 += li[k] + " "
-            #arg2 = li[j+1:i]
-            # arg2 = li.pop(i-2)                        # zmienna kwantyfikowana
-            # arg2 = li.pop(i-1)                        # wyrazenie
-            li[i] = f"{li[i]} {arg1} {arg2}"
-            i += 1
+            arg1 = li.pop(j)                           # zmienna kwantyfikowana
+            i -=1
+            for k in range(j, i-1):                    # zasieg kwantyfikatora
+                li[j] = f"{li[j]} {li.pop(j+1)}"
+                i -= 1
+            li[j] = f"{li.pop(i)} {arg1} ({li[j]})"
             print("##", li)
 
         elif li[i][0] in predicats or functions:
