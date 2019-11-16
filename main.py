@@ -1,4 +1,10 @@
 import translate
+import sys
+
+def show_image(message):
+    a = open("error_art.txt", 'r', encoding="utf-8").read()
+    a = f"\033[1;31m  {message[:-5].upper()}  {a}\033[0m"
+    return a
 
 def read_whole_list_of_lists(li=[]):
     while (True):
@@ -12,6 +18,9 @@ def read_whole_list_of_lists(li=[]):
 
         except KeyboardInterrupt:
             print("\n")
+            break
+        except (ValueError, IndexError):
+            print(show_image())
             break
     return li
 
@@ -27,7 +36,7 @@ def read_each_line_separetly():
         try:
             list_temp = input().split()
             list_temp = translate.to_onp(list_temp)
-            for i in list_temp: print(i, end=" ")
+            print(list_temp)
             print()
 
         except EOFError:
@@ -37,6 +46,10 @@ def read_each_line_separetly():
         except KeyboardInterrupt:
             print("\n")
             break
+        except (ValueError, IndexError) as Error:
+            print(show_image(sys.exc_info()[0].__name__))
+            # print(show_image(type(Error).__name__))
+            # break
 
 
 def main():
