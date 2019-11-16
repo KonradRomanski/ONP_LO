@@ -41,6 +41,7 @@ def to_onp(li):
         elif li[i][0] in (predicats + functions):
             for j in range(int(li[i][2])):
                 li[i-1] = f"{li.pop(i)} {li[i-1]},"
+
                 i -= 1
                 s = li[i][4:].split()
                 s.reverse()
@@ -50,8 +51,8 @@ def to_onp(li):
             # print("##", li)
         else:
             raise ValueError('Invalid value found')
-        a = li.pop()
-        if len(li) != 0:
-            raise  IndexError
+    a = li.pop()
+    if len(li) != 0:
+        raise  IndexError
 
     return a
