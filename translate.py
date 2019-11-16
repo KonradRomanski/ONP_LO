@@ -9,7 +9,7 @@ variables = list(map(chr, range(ord('A'), ord('Z')+1)))
 def to_onp(li):
     i = 0
     while i < len(li):
-        while (li[i] in constants or variables) and len(li[i]) == 1:
+        while (li[i] in (constants or variables)) and len(li[i]) == 1:
             print(i)         # znajduje następny operator
             i += 1
         # pobiera tyle argumentów, ile mu potrzebne
@@ -38,7 +38,7 @@ def to_onp(li):
             li[j] = f"{li.pop(i)} {arg1} ({li[j]})"
             print("##", li)
 
-        elif li[i][0] in predicats or functions:
+        elif li[i][0] in (predicats or functions):
             for j in range(int(li[i][2])):
                 li[i-1] = f"{li.pop(i)} {li[i-1]},"
                 i -= 1
