@@ -49,7 +49,7 @@ def read_each_line_separetly():
             print("\n")
             break
         except (ValueError, IndexError) as Error:
-            print(show_image(sys.exc_info()[0].__name__))
+            print(show_image(sys.exc_info()[0].__name__), end="")
             # print(show_image(type(Error).__name__))
             # break
 
@@ -62,6 +62,6 @@ def main():
 
     ## reding each line separetly
     read_each_line_separetly()
-    
+
 if __name__ == "__main__":
     main()
