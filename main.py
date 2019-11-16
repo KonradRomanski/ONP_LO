@@ -34,7 +34,7 @@ def print_whole_list_of_lists(li):
 def read_each_line_separetly():
     while (True):
         try:
-            print(f"\033[36;1m>\033[0m", end="", sep="")
+            print(f"\033[36;1m> \033[0m", end="", sep="")
             list_temp = input().split()
             list_temp = translate.to_onp(list_temp)
             # print(list_temp)
