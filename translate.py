@@ -50,4 +50,4 @@ def to_onp(li):
             # print("##", li)
 
 
-    return li
+    return li[0]
