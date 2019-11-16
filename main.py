@@ -34,25 +34,24 @@ def print_whole_list_of_lists(li):
 def read_each_line_separetly():
     while (True):
         try:
-            print(f"\033[33m")
-            print(f"\033[36;1m> \033[0m", end="", sep="")
-            list_temp = input().split()
+            print("\033[36;1m> \033[0m", end="", sep="")
+            list_temp = input("\033[1m").split()
             list_temp = translate.to_onp(list_temp)
             # print(list_temp)
             print(f"\033[33;1m{list_temp}\033[0m")
 
         except EOFError:
-            print()
+            print("\033[0m")
             break
 
         except KeyboardInterrupt:
-            print("\n")
+            print("\033[0m\n")
             break
         except (ValueError, IndexError) as Error:
+            print("\033[0m", end="")
             print(show_image(sys.exc_info()[0].__name__), end="")
             # print(show_image(type(Error).__name__))
             # break
-
 
 def main():
     ## reading everything and then printing
