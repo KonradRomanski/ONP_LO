@@ -9,8 +9,7 @@ variables = list(map(chr, range(ord('A'), ord('Z')+1)))
 def to_onp(li):
     i = 0
     while i < len(li):
-        while (li[i] in constants or variables) and len(li[i]) == 1:
-            print(i)         # znajduje następny operator
+        while li[i] in (constants or variables):       # znajduje następny operator
             i += 1
         # pobiera tyle argumentów, ile mu potrzebne
         if li[i] in single_argument:                          # operatory 1-argumentowe
@@ -28,11 +27,11 @@ def to_onp(li):
         elif li[i] in quantifiers:
             j=i-1
 
-            while (not(li[j].isalpha()) and (len(li[j]) != 1)):         # znajduje następny operator
+            while not(li[j] in (constants or variables)):
                 j -= 1
             arg1 = li.pop(j)                           # zmienna kwantyfikowana
             i -= 1
-            for k in range(j, i-1):                    # zasieg kwantyfikatora
+            while j!=i-1:                 # zasieg kwantyfikatora
                 li[j] = f"{li[j]} {li.pop(j+1)}"
                 i -= 1
             li[j] = f"{li.pop(i)} {arg1} ({li[j]})"
