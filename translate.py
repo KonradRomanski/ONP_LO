@@ -3,11 +3,14 @@ double_argument = {"AND", "&", "∧", "OR", "|", "∨", "IMPLIES", "→", "IFF",
 quantifiers = {"FORALL", "∀","EXISTS", "∃"}
 functions = {"f", "g", "h", "i", "j", "k", "l", "m", "n"}
 predicats = {"p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"}
+constants = list(map(chr, range(ord('a'), ord('e')+1)))
+variables = list(map(chr, range(ord('A'), ord('Z')+1)))
 
 def to_onp(li):
     i = 0
     while i < len(li):
-        while (li[i].isalpha()) and (len(li[i]) == 1):         # znajduje następny operator
+        while (li[i] in constants or variables) and len(li[i]) == 1:
+            print(i)         # znajduje następny operator
             i += 1
         # pobiera tyle argumentów, ile mu potrzebne
         if li[i] in single_argument:                          # operatory 1-argumentowe
@@ -28,7 +31,7 @@ def to_onp(li):
             while (not(li[j].isalpha()) and (len(li[j]) != 1)):         # znajduje następny operator
                 j -= 1
             arg1 = li.pop(j)                           # zmienna kwantyfikowana
-            i -=1
+            i -= 1
             for k in range(j, i-1):                    # zasieg kwantyfikatora
                 li[j] = f"{li[j]} {li.pop(j+1)}"
                 i -= 1
