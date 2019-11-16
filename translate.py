@@ -14,7 +14,7 @@ def to_onp(li):
             i += 1
         # pobiera tyle argumentów, ile mu potrzebne
         if li[i] in single_argument:                          # operatory 1-argumentowe
-            li[i-1] = f"{li[i]} {li.pop(i-1)}"
+            li[i-1] = f"({li[i]} {li.pop(i-1)})"
             # print("##", li)                                   # do operatora dopisuje argument, na który operator działa (poprzedni element z tablicy)
 
         elif li[i] in double_argument:                        # operatory 2-argumentowe
@@ -40,7 +40,7 @@ def to_onp(li):
 
         elif li[i][0] in (predicats + functions):
             for j in range(int(li[i][2])):
-                li[i-1] = f"{li.pop(i)}_{li[i-1]},"
+                li[i-1] = f"{li.pop(i)} {li[i-1]},"
 
                 i -= 1
                 s = li[i][4:].split()
