@@ -1,8 +1,8 @@
-single_argument = {"NOT", "~", "¬"}
-double_argument = {"AND", "&", "∧", "OR", "|", "∨", "IMPLIES", "→", "IFF", "↔", "XOR", "⊕"}
-quantifiers = {"FORALL", "∀","EXISTS", "∃"}
-functions = {"f", "g", "h", "i", "j", "k", "l", "m", "n"}
-predicats = {"p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"}
+single_argument = ["NOT", "~", "¬"]
+double_argument = ["AND", "&", "∧", "OR", "|", "∨", "IMPLIES", "→", "IFF", "↔", "XOR", "⊕"]
+quantifiers = ["FORALL", "∀","EXISTS", "∃"]
+functions = list(map(chr, range(ord('f'), ord('n')+1)))
+predicats = list(map(chr, range(ord('p'), ord('z')+1)))
 constants = list(map(chr, range(ord('a'), ord('e')+1)))
 variables = list(map(chr, range(ord('A'), ord('Z')+1)))
 
@@ -38,7 +38,7 @@ def to_onp(li):
             li[j] = f"{li.pop(i)} {arg1} {li[j]}"
             # print("##", li)
 
-        elif li[i][0] in (predicats or functions):
+        elif li[i][0] in (predicats + functions):
             for j in range(int(li[i][2])):
                 li[i-1] = f"{li.pop(i)} {li[i-1]},"
                 i -= 1
@@ -50,5 +50,8 @@ def to_onp(li):
             # print("##", li)
         else:
             raise ValueError('Invalid value found')
+        a = li.pop()
+        if len(li) != 0:
+            raise  IndexError
 
-    return li.pop()
+    return a
