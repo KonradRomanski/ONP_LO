@@ -1,8 +1,8 @@
-single_argument = {"NOT", "~", "¬"}
-double_argument = {"AND", "&", "∧", "OR", "|", "∨", "IMPLIES", "→", "IFF", "↔", "XOR", "⊕"}
-quantifiers = {"FORALL", "∀","EXISTS", "∃"}
-functions = {"f", "g", "h", "i", "j", "k", "l", "m", "n"}
-predicats = {"p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"}
+single_argument = ["NOT", "~", "¬"]
+double_argument = ["AND", "&", "∧", "OR", "|", "∨", "IMPLIES", "→", "IFF", "↔", "XOR", "⊕"]
+quantifiers = ["FORALL", "∀","EXISTS", "∃"]
+functions = list(map(chr, range(ord('f'), ord('n')+1)))
+predicats = list(map(chr, range(ord('p'), ord('z')+1)))
 constants = list(map(chr, range(ord('a'), ord('e')+1)))
 variables = list(map(chr, range(ord('A'), ord('Z')+1)))
 
@@ -14,7 +14,7 @@ def to_onp(li):
             i += 1
         # pobiera tyle argumentów, ile mu potrzebne
         if li[i] in single_argument:                          # operatory 1-argumentowe
-            li[i-1] = f"{li[i]} {li.pop(i-1)}"
+            li[i-1] = f"({li[i]} {li.pop(i-1)})"
             # print("##", li)                                   # do operatora dopisuje argument, na który operator działa (poprzedni element z tablicy)
 
         elif li[i] in double_argument:                        # operatory 2-argumentowe
@@ -35,20 +35,24 @@ def to_onp(li):
             while j!=i-1:                 # zasieg kwantyfikatora
                 li[j] = f"{li[j]} {li.pop(j+1)}"
                 i -= 1
-            li[j] = f"{li.pop(i)} {arg1} {li[j]}"
+            li[j] = f"({li.pop(i)} {arg1} {li[j]})"
             # print("##", li)
 
-        elif li[i][0] in (predicats or functions):
+        elif li[i][0] in (predicats + functions):
             for j in range(int(li[i][2])):
                 li[i-1] = f"{li.pop(i)} {li[i-1]},"
+
                 i -= 1
                 s = li[i][4:].split()
                 s.reverse()
-                s = " ".join(s)
+                s = "_".join(s)
             li[i] = f"{li[i][0]}({s[:-1]})"
             i += 1
             # print("##", li)
         else:
             raise ValueError('Invalid value found')
+    a = li.pop().replace("_", " ")
+    if len(li) != 0:
+        raise  IndexError
 
-    return li.pop()
+    return a

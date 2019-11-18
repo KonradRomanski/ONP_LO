@@ -36,27 +36,27 @@ def read_each_line_separetly(): # def read_each_line_separetly(list_temp):
     while (True):
         try:
             # if list_temp == []:
-            list_temp = input().split()
+            print("\033[36;1m> \033[0m", end="", sep="")
+            list_temp = input("\033[1m").split()
             # if listtemp[0] in ("exit", "quit"):
                 # textpika.goodbye(language)
                 # break
             list_temp = translate.to_onp(list_temp)
-            print(list_temp)
             # list_temp = []
-            print()
+            print(f"\033[33;1m{list_temp}\033[0m")
 
         except EOFError:
-            print()
+            print("\033[0m")
             break
 
         except KeyboardInterrupt:
-            print("\n")
+            print("\033[0m\n")
             break
         except (ValueError, IndexError) as Error:
-            print(show_image(sys.exc_info()[0].__name__))
+            print("\033[0m", end="")
+            print(show_image(sys.exc_info()[0].__name__), end="")
             # print(show_image(type(Error).__name__))
             # break
-
 
 def main():
     ## reading everything and then printing
@@ -67,4 +67,5 @@ def main():
     ## reding each line separetly
     read_each_line_separetly()
 
-main()
+if __name__ == "__main__":
+    main()
