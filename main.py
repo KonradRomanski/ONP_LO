@@ -60,9 +60,9 @@ def read_each_line_separetly(): # def read_each_line_separetly(list_temp):
 
 def main():
     ## reading everything and then printing
-    lists = read_whole_list_of_lists()
-    lists_changed = translate.to_onp(lists)
-    print_whole_list_of_lists(lists_changed)
+    # lists = read_whole_list_of_lists()
+    # lists_changed = translate.to_onp(lists)
+    # print_whole_list_of_lists(lists_changed)
 
     ## reding each line separetly
     read_each_line_separetly()
