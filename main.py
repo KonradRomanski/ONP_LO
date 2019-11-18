@@ -1,4 +1,5 @@
 import translate
+import textpika
 import sys
 
 def show_image(message):
@@ -31,12 +32,17 @@ def print_whole_list_of_lists(li):
             print(j, end=" ")
         print()
 
-def read_each_line_separetly():
+def read_each_line_separetly(): # def read_each_line_separetly(list_temp):
     while (True):
         try:
+            # if list_temp == []:
             list_temp = input().split()
+            # if listtemp[0] in ("exit", "quit"):
+                # textpika.goodbye(language)
+                # break
             list_temp = translate.to_onp(list_temp)
             print(list_temp)
+            # list_temp = []
             print()
 
         except EOFError:
@@ -54,9 +60,9 @@ def read_each_line_separetly():
 
 def main():
     ## reading everything and then printing
-    # lists = read_whole_list_of_lists()
-    # lists_changed = translate.to_onp(lists)
-    # print_whole_list_of_lists(lists_changed)
+    lists = read_whole_list_of_lists()
+    lists_changed = translate.to_onp(lists)
+    print_whole_list_of_lists(lists_changed)
 
     ## reding each line separetly
     read_each_line_separetly()
