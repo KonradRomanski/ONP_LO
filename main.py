@@ -1,6 +1,11 @@
 import translate
 import textpika
 import sys
+import argparse
+
+parser = argparse.ArgumentParser()
+parser.add_argument("-p", "--pikatchu", action='store_true')
+parser.add_argument("-l", "--lines", action='store_true')
 
 def show_image(message):
     a = open("error_art.txt", 'r', encoding="utf-8").read()
@@ -59,6 +64,8 @@ def read_each_line_separetly(): # def read_each_line_separetly(list_temp):
             # break
 
 def main():
+    #print(parser.parse_args().pikatchu)
+
     ## reading everything and then printing
     # lists = read_whole_list_of_lists()
     # lists_changed = translate.to_onp(lists)
