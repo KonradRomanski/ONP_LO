@@ -1,4 +1,4 @@
-import translate
+import onp_translation
 import textpika
 import sys
 import argparse
@@ -46,7 +46,7 @@ def read_each_line_separetly(): # def read_each_line_separetly(list_temp):
             # if listtemp[0] in ("exit", "quit"):
                 # textpika.goodbye(language)
                 # break
-            list_temp = translate.to_onp(list_temp)
+            list_temp = onp_translation.to_onp(list_temp)
             # list_temp = []
             print(f"\033[33;1m{list_temp}\033[0m")
 
@@ -68,7 +68,7 @@ def main():
 
     ## reading everything and then printing
     # lists = read_whole_list_of_lists()
-    # lists_changed = translate.to_onp(lists)
+    # lists_changed = onp_translation.to_onp(lists)
     # print_whole_list_of_lists(lists_changed)
 
     ## reding each line separetly

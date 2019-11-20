@@ -1,4 +1,4 @@
-from translate import to_onp
+from onp_translation import to_onp
 import unittest
 
 class TestONP(unittest.TestCase):
