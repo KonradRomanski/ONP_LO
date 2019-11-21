@@ -1,47 +1,37 @@
+import main
+
 def choose_language():
     print("pl/en ?")
     language = input()
     while language not in ("pl", "en"):
-        print(show_image())
+        print(main.show_image("ValueError"))
         language = input()
     return language
 
 
 def welcome(language):
     if language == "pl":
-        print("------ZAMIANA ODWROTNEJ NOTACJI POLSKIEJ NA NOTACJĘ INFIKSOWĄ------ \n")
-        print("Jeżeli chcesz zamienić wiele wyrażeń na raz, wybierz")
-        print("Jeżeli chcesz wyjść z programu wpisz 'exit' lub 'quit' /n")
-        print("W przeciwnym przypadku wpisz swoją formułę: ")
+        print("\n\033[36;1m------ZAMIANA ODWROTNEJ NOTACJI POLSKIEJ NA NOTACJĘ INFIKSOWĄ------\033[0m")
+        print("Aby wyjść z programu wpisz 'exit' lub 'quit' \n")
+        print("Możesz zacząć wpisywać swoją formułę.")
     if language == "en":
-        print("------CHANGING REVERSED POLISH NOTATION TO INFIX NOTATION------ \n")
-        print("If you want to change many expressions at once, type 1")
-        print("If you want to exit program, type 'exit' or 'quit' /n")
-        print("Otherwise enter your expression: ")
+        print("\n\033[36;1m------CHANGING REVERSED POLISH NOTATION TO INFIX NOTATION------\033[0m")
+        print("To exit program, type 'exit' or 'quit' \n")
+        print("You can enter your expression now. ")
+
+def alllines(language):
+    if language == "pl":
+        print("Wybrałeś wpisywanie wielu linii naraz")
+        print("Aby zakończyć wpisywanie i wyświetlić wyniki, naciśnij ctrl + d")
+    if language == "en":
+        print("You have chosen to enter multiple lines at once")
+        print("To finish entering and display the results, press ctrl + d ")
 
 def goodbye(language):
     if language == "pl":
-        print("DO ZOBACZENIA!")
+        print("\n\033[0mDO ZOBACZENIA!")
         # print("Wesprzyj nas przelewając trochę pieniędzy: <numer_konta>")
         print("© Anna Panfil & Konrad Romański")
     if language == "en":
-        print("SEE YOU SOON!")
+        print("\n\033[0mSEE YOU SOON!")
         print("© Anna Panfil & Konrad Romański")
-
-###propozycja działania maina
-def main():
-    language = textpika.choose_language()
-    textpika.welcome(language)
-    choice = input()
-
-    if choice == "1":
-        ## reading everything and then printing
-        lists = read_whole_list_of_lists()
-        lists_changed = translate.to_onp(lists)
-        print_whole_list_of_lists(lists_changed)
-    elif choice in ("quit, exit"):
-        textpika.goodbye(language)
-        return None
-    else:
-        ## reding each line separetly
-        read_each_line_separetly(choice.split())

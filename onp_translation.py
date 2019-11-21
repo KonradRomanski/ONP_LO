@@ -10,12 +10,11 @@ def to_onp(li):
     i = 0
     while i < len(li):
         while (li[i] in (constants + variables)):
-            # print(i)         # znajduje następny operator
-            i += 1
+            i += 1          # znajduje następny operator
         # pobiera tyle argumentów, ile mu potrzebne
         if li[i] in single_argument:                          # operatory 1-argumentowe
             li[i-1] = f"({li[i]} {li.pop(i-1)})"
-            # print("##", li)                                   # do operatora dopisuje argument, na który operator działa (poprzedni element z tablicy)
+            # print("##", li)                                 # do operatora dopisuje argument, na który operator działa (poprzedni element z tablicy)
 
         elif li[i] in double_argument:                        # operatory 2-argumentowe
             arg1 = li.pop(i - 2)                              # pobiera 2 argumenty (2 poprzednie elementy tablicy)
@@ -30,7 +29,7 @@ def to_onp(li):
 
             while not(li[j] in (constants + variables)):
                 j -= 1
-            arg1 = li.pop(j)                           # zmienna kwantyfikowana
+            arg1 = li.pop(j)              # zmienna kwantyfikowana
             i -= 1
             while j!=i-1:                 # zasieg kwantyfikatora
                 li[j] = f"{li[j]} {li.pop(j+1)}"

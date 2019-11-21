@@ -18,18 +18,19 @@ def print_whole_list_of_lists(li):
     for i in li:
         print(f"\033[33;1m{i}\033[0m")
 
-def read_data(li = []): # def read_data(list_temp):
+def read_data(li = []):
     while (True):
         try:
             # if list_temp == []:
             print("\033[36;1m> \033[0m", end="", sep="")
             list_temp = input("\033[1m").split()
-            # if listtemp[0] in ("exit", "quit"):
-                # textpika.goodbye(language)
-                # break
-            list_temp = onp_translation.to_onp(list_temp)
 
-            if lili == False: print(f"\033[33;1m{list_temp}\033[0m")
+            if list_temp[0] in ("exit", "quit"):
+                textpika.goodbye("pl")
+                break
+
+            list_temp = onp_translation.to_onp(list_temp)
+            if lili == False: print(f"\033[33;1m{list_temp}\033[0m \n")
             else: li.append(list_temp)
 
         except EOFError:
@@ -55,8 +56,13 @@ def main():
     # print_whole_list_of_lists(lists_changed)
 
     ## reding each line separetly
-    read_data()
-    if lili == True: print_whole_list_of_lists(read_data())
+    language = textpika.choose_language()
+    textpika.welcome(language)
+
+    if lili == True:
+        textpika.alllines(language)
+        print_whole_list_of_lists(read_data())
+    else: read_data()
 
 if __name__ == "__main__":
     main()
