@@ -4,10 +4,10 @@ import sys
 import argparse
 
 parser = argparse.ArgumentParser()
-parser.add_argument("-p", "--pikatchu", action='store_true')
+parser.add_argument("-p", "--pikatchu",help="Budowa: -p 'język' (en/pl)")
 parser.add_argument("-l", "--lines", action='store_true')
-lili = parser.parse_args().lines
-piki = parser.parse_args().pikatchu
+lili = parser.parse_args().lines # flaga do okreslenia trybu wczytywania
+piki = parser.parse_args().pikatchu #flaga do określenia obecności wiadomości powitalnej i jezyka
 
 def show_image(message):
     a = open("error_art.txt", 'r', encoding="utf-8").read()
@@ -48,19 +48,11 @@ def read_data(li = []):
             # print(show_image(type(Error).__name__))
 
 def main():
-    #print(piki)
-
-    # reading everything and then printing
-    # lists = read_whole_list_of_lists()
-    # lists_changed = onp_translation.to_onp(lists)
-    # print_whole_list_of_lists(lists_changed)
-
-    ## reding each line separetly
-    language = textpika.choose_language()
-    textpika.welcome(language)
-
+    if piki != False:
+        #language = textpika.choose_language()
+        textpika.welcome(piki)
+        textpika.alllines(piki)
     if lili == True:
-        textpika.alllines(language)
         print_whole_list_of_lists(read_data())
     else: read_data()
 
