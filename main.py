@@ -26,7 +26,7 @@ def read_data(li = []):
             list_temp = input("\033[1m").split()
 
             if list_temp[0] in ("exit", "quit"):
-                textpika.goodbye("pl")
+                if piki != False: textpika.goodbye(piki)
                 break
 
             list_temp = onp_translation.to_onp(list_temp)
@@ -41,6 +41,7 @@ def read_data(li = []):
         except KeyboardInterrupt:
             print("\033[0m\n")
             if lili == True: return li
+            if piki != False: textpika.goodbye(piki)
             break
         except (ValueError, IndexError) as Error:
             print("\033[0m", end="")
@@ -54,6 +55,7 @@ def main():
         textpika.alllines(piki)
     if lili == True:
         print_whole_list_of_lists(read_data())
+        if piki != False: textpika.goodbye(piki)
     else: read_data()
 
 if __name__ == "__main__":
