@@ -36,6 +36,7 @@ def read_data(li = []):
         except EOFError:
             print("\033[0m")
             if lili == True: return li
+            if piki != False: textpika.goodbye(piki)
             break
 
         except KeyboardInterrupt:
@@ -52,7 +53,8 @@ def main():
     if piki != False:
         #language = textpika.choose_language()
         textpika.welcome(piki)
-        textpika.alllines(piki)
+        if lili == True: textpika.alllines(piki)
+        if lili == False: textpika.everyline(piki)
     if lili == True:
         print_whole_list_of_lists(read_data())
         if piki != False: textpika.goodbye(piki)
