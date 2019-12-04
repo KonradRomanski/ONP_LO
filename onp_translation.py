@@ -38,16 +38,20 @@ def to_onp(li):
             # print("##", li)
 
         elif li[i][0] in (predicats + functions):
-            for j in range(int(li[i][2])):
-                li[i-1] = f"{li.pop(i)} {li[i-1]},"
+            if int(li[i][2]) == 0:
+                li[i] = f"{li[i][0]}()"
+                i += 1
+            else:
+                for j in range(int(li[i][2])):
+                    li[i-1] = f"{li.pop(i)} {li[i-1]},"
 
-                i -= 1
-                s = li[i][4:].split()
-                s.reverse()
-                s = "_".join(s)
-            li[i] = f"{li[i][0]}({s[:-1]})"
-            i += 1
-            # print("##", li)
+                    i -= 1
+                    s = li[i][4:].split()
+                    s.reverse()
+                    s = "_".join(s)
+                li[i] = f"{li[i][0]}({s[:-1]})"
+                i += 1
+                # print("##", li)
         else:
             raise ValueError('Invalid value found')
     a = li.pop().replace("_", " ")
