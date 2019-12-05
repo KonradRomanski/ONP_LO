@@ -26,16 +26,16 @@ def read_data(li = []):
             list_temp = input("\033[1m").split()
 
             if list_temp[0] in ("exit", "quit"):
-                if piki != False: textpika.goodbye(piki)
+                if piki: textpika.goodbye(piki)
                 break
 
             list_temp = onp_translation.to_onp(list_temp)
-            if lili == False: print(f"\033[33;1m{list_temp}\033[0m \n")
+            if not lili: print(f"\033[33;1m{list_temp}\033[0m \n")
             else: li.append(list_temp)
 
         except EOFError:
             print("\033[0m")
-            if lili == True: return li
+            if lili: return li
             if piki != False: textpika.goodbye(piki)
             break
 
