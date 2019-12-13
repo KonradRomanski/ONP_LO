@@ -25,9 +25,8 @@ def read_data(li = []):
             print("\033[36;1m> \033[0m", end="", sep="")
             list_temp = input("\033[1m").split()
 
-            if list_temp[0] in ("exit", "quit"):
-                if piki: textpika.goodbye(piki)
-                break
+            if list_temp[0] in {"exit", "quit"}:
+                raise KeyboardInterrupt()
 
             list_temp = onp_translation.to_onp(list_temp)
             if not lili: print(f"\033[33;1m{list_temp}\033[0m \n")
